@@ -9,7 +9,20 @@ import { OlympicService } from '../../core/services/olympic.service';
 })
 export class HomeComponent implements OnInit {
   public olympics$: Observable<any> = of(null);
-
+  pieChartData = [
+    {
+      "name": "Germany",
+      "value": 8940000
+    },
+    {
+      "name": "USA",
+      "value": 5000000
+    },
+    {
+      "name": "France",
+      "value": 7200000
+    }
+  ];
   constructor(private olympicService: OlympicService) {}
 
   ngOnInit(): void {

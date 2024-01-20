@@ -1,0 +1,30 @@
+div h1 {
+    margin-bottom: 2%;
+}
+
+div h2 {
+    margin-top: 2%;
+    width: 20%;
+    background-color: #02838F;
+    color: white;
+    border-radius: 10px;
+    padding: 1%;
+    margin: 0 auto; // Ajout de cette ligne pour centrer la div
+}
+
+.boiteH3 {
+    text-align: center; // Ajout de cette ligne pour centrer le texte des balises p
+    border: 2px solid #02838F;
+    border-radius: 10px;
+    padding-right : 10px;
+    padding-left: 10px;
+    margin: 10px;
+    width: 180px;
+    color: rgb(122, 122, 122);
+
+    p {
+        font-size:x-large; // Ajout de cette ligne pour modifier la taille du texte des balises p
+        color: black; // Ajout de cette ligne pour modifier la couleur du texte des balises p
+    }
+}
+

@@ -2,11 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 h1 {
+    width: 50%;
+    margin: 0 auto;
     background-color: rgb(63, 129, 63);
     border-radius: 10px;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
     color: white; // Change the text color to white
     padding-top: 2%; // Add a padding of 2% 
     padding-bottom: 2%; // Add a padding of 2%
+}
+h1 h2 h3 {
+    font-family: 'Roboto', sans-serif;
+}
+h3 {
+    font-size:large;
 }
