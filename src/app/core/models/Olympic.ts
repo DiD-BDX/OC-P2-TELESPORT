@@ -10,5 +10,5 @@ example of an olympic country:
 export interface OlympicCountry {
     id: number,
     country: string,
-    participations: []
+    participations: number[]
 }

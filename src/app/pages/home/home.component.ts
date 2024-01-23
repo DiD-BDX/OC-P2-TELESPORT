@@ -10,39 +10,32 @@ import { OlympicService } from '../../core/services/olympic.service';
 })
 export class HomeComponent implements OnInit {
   public olympics$: Observable<OlympicCountry[]> = of([]);
-
   
-  pieChartData = [
-    
-    {
-      "name": "Germany",
-      "value": 8940000
-    },
-    {
-      "name": "USA",
-      "value": 5000000
-    },
-    {
-      "name": "France",
-      "value": 7200000
-    }
-  ];
+  PieChartResults: any[] = [];
+  
+  
   constructor(private olympicService: OlympicService) {}
+
 
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
     let NAME: string[] = []; // Déclaration du tableau NAME
     this.olympics$.subscribe(olympicCountries => {
       
-      olympicCountries.forEach(olympicCountry => {
-        let totalParticipations = 0;
-        totalParticipations += olympicCountry.participations.length;
-        console.log(`Total Participations: ${totalParticipations}`);
-        console.log(`Country: ${olympicCountry.country}`);
-        NAME.push(olympicCountry.country);
+      this.PieChartResults = olympicCountries.map(OlympicCountry => {
+        let totalParticipations = OlympicCountry.participations.length;
+        console.log(`Country: ${OlympicCountry.country}`);
+        NAME.push(OlympicCountry.country);
+  
+        return {
+          id: OlympicCountry.id,
+          name: OlympicCountry.country,
+          value: totalParticipations
+        };
       });
+  
       console.log(NAME); // Affichage du contenu du tableau NAME
+      
     });
-
   }
 }

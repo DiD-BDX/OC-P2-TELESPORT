@@ -3,13 +3,13 @@
     <h1>OLYMPIC APP - Dashboard</h1>
 </div>
 
-<div style="text-align: center;">
+<div style="display: flex; justify-content: center;">
     <h2>Medals per country</h2>
 </div>
 
 <div style="display: flex; justify-content: center;">
     <div class="boiteH3">
-        <h3>Number of Jos</h3>
+        <h3>Number of JOs</h3>
         <p>a definir</p>
     </div>
     <div class="boiteH3">
@@ -18,8 +18,22 @@
     </div>
 </div>
 
+<!-- <div #containerRef class="pieChartDiv">
 <ngx-charts-pie-chart
-    [results]="pieChartData"
+    [results]="PieChartResults"
     [legend]="false"
-    [labels]="true">
+    [labels]="true"
+    [view]="[containerRef.offsetWidth, containerRef.offsetHeight]"
+>
 </ngx-charts-pie-chart>
+</div> -->
+
+<div class="pieChartDiv">
+    <ngx-charts-pie-chart
+        [results]="PieChartResults"
+        [legend]="false"
+        [labels]="true"
+    >
+    </ngx-charts-pie-chart>
+    </div>
+

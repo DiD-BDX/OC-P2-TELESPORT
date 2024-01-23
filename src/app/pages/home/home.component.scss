@@ -3,13 +3,13 @@ div h1 {
 }
 
 div h2 {
-    margin-top: 2%;
-    width: 20%;
+    //margin-top: 2%;
+    width: 25%;
     background-color: #02838F;
     color: white;
     border-radius: 10px;
     padding: 1%;
-    margin: 0 auto; // Ajout de cette ligne pour centrer la div
+    text-align: center;
 }
 
 .boiteH3 {
@@ -19,7 +19,6 @@ div h2 {
     padding-right : 10px;
     padding-left: 10px;
     margin: 10px;
-    width: 180px;
     color: rgb(122, 122, 122);
 
     p {
@@ -28,3 +27,8 @@ div h2 {
     }
 }
 
+.pieChartDiv {
+   //background-color: #02838F;
+    width: 100%;
+    
+}
