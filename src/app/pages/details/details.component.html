@@ -1,0 +1,37 @@
+<div style="text-align: center;">
+    <h1>OLYMPIC APP - Details</h1>
+</div>
+<div style="display: flex; justify-content: center;">
+    <h2>name of the country (a definir)</h2>
+</div>
+
+<div style="display: flex; justify-content: center;">
+    <div class="boiteH3">
+        <h3>Number of entries</h3>
+        <p>a definir</p>
+    </div>
+    <div class="boiteH3">
+        <h3>Total number medals</h3>
+        <p>a definir</p>
+    </div>
+    <div class="boiteH3">
+        <h3>Total number of athletes</h3>
+        <p>a definir</p>
+    </div>
+</div>
+
+<div class="ChartDiv">
+    <ngx-charts-bar-vertical
+    
+    [results]="BarChartResults"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    
+    >
+    </ngx-charts-bar-vertical>
+</div>
+```

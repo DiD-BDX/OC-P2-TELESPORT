@@ -4,6 +4,10 @@
 </div>
 
 <div style="display: flex; justify-content: center;">
+    <button onclick="window.location.href = '/details';">Go to Details</button>
+</div>
+
+<div style="display: flex; justify-content: center;">
     <h2>Medals per country</h2>
 </div>
 
@@ -18,22 +22,14 @@
     </div>
 </div>
 
-<!-- <div #containerRef class="pieChartDiv">
-<ngx-charts-pie-chart
-    [results]="PieChartResults"
-    [legend]="false"
-    [labels]="true"
-    [view]="[containerRef.offsetWidth, containerRef.offsetHeight]"
->
-</ngx-charts-pie-chart>
-</div> -->
-
-<div class="pieChartDiv">
+<div class="ChartDiv">
     <ngx-charts-pie-chart
         [results]="PieChartResults"
         [legend]="false"
         [labels]="true"
     >
     </ngx-charts-pie-chart>
-    </div>
+</div>
+
+
 

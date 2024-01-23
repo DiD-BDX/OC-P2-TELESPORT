@@ -17,3 +17,33 @@ h1 h2 h3 {
 h3 {
     font-size:large;
 }
+div h1 {
+    margin-bottom: 2%;
+}
+
+div h2 {
+    //margin-top: 2%;
+    width: 25%;
+    background-color: #02838F;
+    color: white;
+    border-radius: 10px;
+    padding: 1%;
+    text-align: center;
+}
+
+.boiteH3 {
+    text-align: center; // Ajout de cette ligne pour centrer le texte des balises p
+    border: 2px solid #02838F;
+    border-radius: 10px;
+    padding-right : 10px;
+    padding-left: 10px;
+    margin: 10px;
+    color: rgb(122, 122, 122);
+    width: 15%; // Add this line to set the width of .boiteH3 to 25%
+
+    p {
+        font-size:x-large; // Ajout de cette ligne pour modifier la taille du texte des balises p
+        color: black; // Ajout de cette ligne pour modifier la couleur du texte des balises p
+    }
+}
+
