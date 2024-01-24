@@ -50,7 +50,7 @@ export class DetailsComponent {
       return sum + countryAthletes;
     }, 0);
   }
-
+  
 
     ngOnInit(): void {
       this.pageId = this.route.snapshot.paramMap.get('id');
@@ -61,7 +61,7 @@ export class DetailsComponent {
       }
       console.log('this.pageId: ', this.pageId);
 
-      // Trouver le pays spécifié dans le tableau countryNameData
+      // filtrer le tableau countryNameData et Trouver le pays spécifié
       let country = this.countryNameData.find(c => c.country === this.pageId);
       console.log('country: ', country);
       // Si le pays a été trouvé et qu'il a des participations

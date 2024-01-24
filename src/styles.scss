@@ -1,7 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.btnHome button{
+    padding: 1%;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(164, 33, 0);
+    border-radius: 10px;
+    border-width: 0cap;
+}
 h1 {
     width: 80%;
     margin: 0 auto;
@@ -12,9 +22,7 @@ h1 {
     padding-top: 2%; // Add a padding of 2% 
     padding-bottom: 2%; // Add a padding of 2%
 }
-h1 h2 h3 {
-    font-family: 'Roboto', sans-serif;
-}
+
 h3 {
     font-size:large;
 }
