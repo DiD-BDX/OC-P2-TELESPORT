@@ -2,36 +2,36 @@
     <h1>OLYMPIC APP - Details</h1>
 </div>
 <div style="display: flex; justify-content: center;">
-    <h2>name of the country (a definir)</h2>
+    <h2>{{this.pageId}}</h2>
 </div>
 
 <div style="display: flex; justify-content: center;">
     <div class="boiteH3">
-        <h3>Number of entries</h3>
-        <p>a definir</p>
+        <h3>Number of participations</h3>
+        <p>{{ getTotalParticipations() }}</p>
     </div>
     <div class="boiteH3">
         <h3>Total number medals</h3>
-        <p>a definir</p>
+        <p>{{ getTotalMedals() }}</p>
     </div>
     <div class="boiteH3">
         <h3>Total number of athletes</h3>
-        <p>a definir</p>
+        <p>{{ getTotalAthletes() }}</p>
     </div>
 </div>
 
 <div class="ChartDiv">
     <ngx-charts-bar-vertical
     
-    [results]="BarChartResults"
-    [gradient]="gradient"
-    [xAxis]="showXAxis"
-    [yAxis]="showYAxis"
-    [legend]="showLegend"
-    [showXAxisLabel]="showXAxisLabel"
-    [showYAxisLabel]="showYAxisLabel"
-    
+    [results]="chartData"
+    [xAxis]="true"
+    [yAxis]="true"
+    [gradient]="false"
+    [legend]="false"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    xAxisLabel="Years"
+    yAxisLabel="Medals">
     >
     </ngx-charts-bar-vertical>
 </div>
-```

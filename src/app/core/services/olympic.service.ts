@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, forkJoin } from 'rxjs';
+import { BehaviorSubject, forkJoin, Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { OlympicCountry } from '../models/Olympic';
 import { Participation } from '../models/Participation';
@@ -38,6 +38,9 @@ export class OlympicService {
   }
   getParticipations() {
     return this.participation$.asObservable();
+  }
+  getOlympicCountry(Id: string): Observable<OlympicCountry> {
+    return this.http.get<OlympicCountry>(this.olympicUrl);
   }
 }
 
