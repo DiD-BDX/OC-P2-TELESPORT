@@ -12,19 +12,19 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   public olympics$: Observable<OlympicCountry[]> = of([]);
   PieChartResults: OlympicCountry[] = [];
-  
+  countryNameData : any[] = [];
+  totalUniqueJOs: number = 0;
   
   constructor(private olympicService: OlympicService, private router: Router) {
+    this.olympicService.getCountryNameData().subscribe(data => { // <-- on souscrit à l'observable getCountryNameData() du service
+      this.countryNameData = data;
+    });
+
     this.olympics$ = this.olympicService.getOlympics();
-    
-    
     this.olympics$.subscribe(olympicCountries => {
-      
       this.PieChartResults = olympicCountries.map(p => {
         let totalParticipations = p.participations.length;
-        console.log(`Country: ${p.country}`);
-        
-        
+        //console.log(`Country: ${p.country}`);
         return {
           id: p.id,
           country: p.country,
@@ -41,8 +41,11 @@ export class HomeComponent implements OnInit {
   onSelect(data: any): void {
     this.router.navigate(['/details', data.name]);
   }
+
   ngOnInit(): void {
-    
+    this.olympicService.getCountryNameData().subscribe(data => {
+      this.totalUniqueJOs = this.olympicService.getTotalUniqueJOs(data);
+    });
     
   }
  
