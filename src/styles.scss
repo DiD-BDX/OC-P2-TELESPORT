@@ -48,11 +48,19 @@ div h2 {
     padding-left: 10px;
     margin: 10px;
     color: rgb(122, 122, 122);
-    width: 15%; // Add this line to set the width of .boiteH3 to 25%
+    width: 15%; 
 
     p {
         font-size:x-large; // Ajout de cette ligne pour modifier la taille du texte des balises p
         color: black; // Ajout de cette ligne pour modifier la couleur du texte des balises p
+    }
+    
+    @media screen and (max-width: 768px) {
+        width: 50%;
+    }
+    
+    @media screen and (max-width: 480px) {
+        width: 100%;
     }
 }
 
