@@ -1,9 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, forkJoin, Observable, of, map } from 'rxjs';
+import { BehaviorSubject, Observable, throwError, map } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { OlympicCountry } from '../models/Olympic';
 import { Participation } from '../models/Participation';
+import { Router } from '@angular/router';
+
 
 
 @Injectable({
@@ -16,7 +18,35 @@ export class OlympicService {
   filterCountryNameData: Participation[] = []; // <-- on crée un tableau vide pour stocker les données du pays selectionné
   flatCountryNameData: Participation[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,  private router: Router) {
+    this.testJsonConnection().subscribe({ // Test de la connexion reseau au JSON
+      next: () => {
+        // La connexion au fichier JSON a réussi, vous pouvez exécuter votre code ici
+      },
+      error: () => {
+        // La connexion au fichier JSON a échoué, redirigez vers la page d'erreur
+        this.router.navigate(['/networkerror']);
+      }
+    });
+  }
+
+  testJsonConnection(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      }),
+      observe: 'response' as 'response',
+      params: new HttpParams().set('_limit', '1')
+    };
+  
+    return this.http.get(this.olympicUrl, httpOptions)
+      .pipe(
+        catchError(error => {
+          console.error(error);
+          return throwError(() => error);
+        })
+      );
+  }  
 
   loadInitialData() {
     return this.http.get<OlympicCountry[]>(this.olympicUrl).pipe(
@@ -48,7 +78,7 @@ export class OlympicService {
           return this.countryNameData;
         })
       );
-    //}
+    
   }
 
     // creation des fonctions de calcul pour affichage dans le DOM dans le service pour etre utiliser dans les autres composants
