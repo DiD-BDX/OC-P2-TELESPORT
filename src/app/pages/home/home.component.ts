@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
   
   onSelect(data: detailsData): void {
     this.router.navigate(['/details', data.name]);
-    console.log(data.name);
   }
   ngOnInit(): void {
     this.olympicService.getCountryNameData().subscribe(data => {

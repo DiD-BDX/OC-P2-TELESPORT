@@ -27,7 +27,6 @@ export class DetailsComponent {
   }
 
   getTotalParticipations(): number { // <-- affiche le nbre de participations du pays selectionné en important une methode du service
-    //return this.olympicService.getTotalParticipations(this.filterCountryNameData);
     return this.filterCountryNameData.length;
   }
   getTotalMedals(): number { // <-- affiche le nbre de médailles du pays selectionné en important une methode du service
@@ -51,7 +50,6 @@ export class DetailsComponent {
       let countryFound = this.countryNameData.find(c => c.country === this.pageId);
        if (countryFound && countryFound.participations) { // Si le pays a été trouvé et qu'il a des participations 
         this.filterCountryNameData = countryFound.participations; // Assigner les participations à filterCountryNameData
-      console.log('filterCountryNameData : ', this.filterCountryNameData);
       } else {
         this.filterCountryNameData = []; // Sinon, assigner un tableau vide à filterCountryNameData
       }

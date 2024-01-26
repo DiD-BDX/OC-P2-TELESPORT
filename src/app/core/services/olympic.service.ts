@@ -12,10 +12,8 @@ import { Participation } from '../models/Participation';
 export class OlympicService {
   private olympicUrl = './assets/mock/olympic.json';
   private olympics$ = new BehaviorSubject<OlympicCountry[]>([]);
-  //private participation$ = new BehaviorSubject<Participation[]>([]);
   countryNameData: OlympicCountry[] = []; // <-- on crée un tableau vide pour stocker les données des pays
-  //participationData: Participation[] = []; // <-- on crée un tableau vide pour stocker les données des participations
-  filterCountryNameData: Participation[] = []; // <-- on crée un tableau vide pour stocker les données des pays filtrés
+  filterCountryNameData: Participation[] = []; // <-- on crée un tableau vide pour stocker les données du pays selectionné
   flatCountryNameData: Participation[] = [];
 
   constructor(private http: HttpClient) {}
@@ -37,14 +35,7 @@ export class OlympicService {
     return this.olympics$.asObservable();
   }
 
- /*  getOlympicCountry(Id: string): Observable<OlympicCountry> {
-    return this.http.get<OlympicCountry>(this.olympicUrl);
-  } */
-
   getCountryNameData(): Observable<OlympicCountry[]> { // <-- on utilise un observable pour que les données soient chargées une seule fois dans countryNameData
-   /*  if (this.countryNameData.length > 0) {
-      return of(this.countryNameData);
-    } else { */
       return this.getOlympics().pipe(
         map(participationsData => {
           this.countryNameData = participationsData.map(p => {
@@ -54,7 +45,6 @@ export class OlympicService {
               participations: p.participations,
             };
           });
-          console.log('countryNameData : ', this.countryNameData);
           return this.countryNameData;
         })
       );
@@ -62,9 +52,6 @@ export class OlympicService {
   }
 
     // creation des fonctions de calcul pour affichage dans le DOM dans le service pour etre utiliser dans les autres composants
-    /* getTotalParticipations(filterCountryNameData: Participation[]): number { // <-- affiche le nbre de participations du pays selectionné
-      return filterCountryNameData.reduce((sum, p) => sum + p.participations.length, 0);
-    } */
     getTotalMedals(filterCountryNameData: Participation[]): number { // <-- affiche le nbre de médailles du pays selectionné
       return filterCountryNameData.reduce((sum: number, p: Participation) => sum + p.medalsCount, 0);
     }
@@ -73,9 +60,7 @@ export class OlympicService {
     }
     getTotalUniqueJOs(countryNameData: OlympicCountry[]): number { // <-- affiche le nbre de JOs uniques(y en a 3, 2012, 2016 et 2020)
       const uniqueDates = new Set();
-      console.log('countrynamedata : ', countryNameData);
       this.flatCountryNameData = this.countryNameData.flatMap(p => p.participations);// <--on applatit le tableau CountryNameData
-      console.log('flatCountryNameData : ', this.flatCountryNameData);
       countryNameData.forEach((country: { participations: Participation[] }) => {
         country.participations.forEach((participation: Participation) => {
           uniqueDates.add(participation.year);
