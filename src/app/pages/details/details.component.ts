@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { OlympicService } from '../../core/services/olympic.service';
 import { ActivatedRoute } from '@angular/router';
+import { Participation } from '../../core/models/Participation';
+import { OlympicCountry, barChartData, detailsData } from '../../core/models/Olympic';
 
 
 @Component({
@@ -12,9 +14,9 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailsComponent {
   //country?: OlympicCountry; // Déclaration de la variable country
   pageId: string | null = null;
-  chartData: any[] = [];
-  countryNameData : any[] = [];
-  filterCountryNameData : any[] = [];
+  chartData: barChartData[] = [];
+  countryNameData : OlympicCountry[] = [];
+  filterCountryNameData : Participation[] = [];
   
   
 
@@ -25,7 +27,8 @@ export class DetailsComponent {
   }
 
   getTotalParticipations(): number { // <-- affiche le nbre de participations du pays selectionné en important une methode du service
-    return this.olympicService.getTotalParticipations(this.filterCountryNameData);
+    //return this.olympicService.getTotalParticipations(this.filterCountryNameData);
+    return this.filterCountryNameData.length;
   }
   getTotalMedals(): number { // <-- affiche le nbre de médailles du pays selectionné en important une methode du service
     return this.olympicService.getTotalMedals(this.filterCountryNameData);
@@ -45,18 +48,18 @@ export class DetailsComponent {
       }
 
       // filtrer le tableau countryNameData et Trouver le pays spécifié
-      let country = this.countryNameData.find(c => c.country === this.pageId);
-       if (country && country.participations) { // Si le pays a été trouvé et qu'il a des participations 
-        this.filterCountryNameData = country.participations; // Assigner les participations à filterCountryNameData
+      let countryFound = this.countryNameData.find(c => c.country === this.pageId);
+       if (countryFound && countryFound.participations) { // Si le pays a été trouvé et qu'il a des participations 
+        this.filterCountryNameData = countryFound.participations; // Assigner les participations à filterCountryNameData
+      console.log('filterCountryNameData : ', this.filterCountryNameData);
       } else {
         this.filterCountryNameData = []; // Sinon, assigner un tableau vide à filterCountryNameData
       }
-      let participations = this.filterCountryNameData.flatMap(p => p.participations);// <--on applatit le tableau filterCountryNameData
-      this.chartData = participations.map(p => ({
-        name: p.year,
-        value: p.medalsCount
+      
+      this.chartData = this.filterCountryNameData.map(p => ({ // <-- on utilise la méthode map() pour créer un nouveau tableau
+        name: p.year, // avec les données de filterCountryNameData pour l'affichage du graphique
+        value: p.medalsCount,
       }));
-
     }
     
   }

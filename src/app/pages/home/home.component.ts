@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { OlympicCountry } from '../../core/models/Olympic';
+import { OlympicCountry, detailsData } from '../../core/models/Olympic';
 import { OlympicService } from '../../core/services/olympic.service';
 import { Router } from '@angular/router';
 
@@ -11,42 +11,33 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   public olympics$: Observable<OlympicCountry[]> = of([]);
-  PieChartResults: OlympicCountry[] = [];
-  countryNameData : any[] = [];
+  PieChartResults: detailsData[] = [];
+  countryNameData : OlympicCountry[] = [];
   totalUniqueJOs: number = 0;
   
-  constructor(private olympicService: OlympicService, private router: Router) {
-    this.olympicService.getCountryNameData().subscribe(data => { // <-- on souscrit à l'observable getCountryNameData() du service
+  constructor(private olympicService: OlympicService, private router: Router) {}
+  
+  onSelect(data: detailsData): void {
+    this.router.navigate(['/details', data.name]);
+    console.log(data.name);
+  }
+  ngOnInit(): void {
+    this.olympicService.getCountryNameData().subscribe(data => {
       this.countryNameData = data;
+      this.totalUniqueJOs = this.olympicService.getTotalUniqueJOs(data);
     });
 
     this.olympics$ = this.olympicService.getOlympics();
     this.olympics$.subscribe(olympicCountries => {
       this.PieChartResults = olympicCountries.map(p => {
         let totalParticipations = p.participations.length;
-        //console.log(`Country: ${p.country}`);
         return {
-          id: p.id,
-          country: p.country,
+          label: p.country,
           name : p.country,
           value: totalParticipations,
-          participations: p.participations,
         };
       });
-   
     });
-    
-  }
-  
-  onSelect(data: any): void {
-    this.router.navigate(['/details', data.name]);
   }
 
-  ngOnInit(): void {
-    this.olympicService.getCountryNameData().subscribe(data => {
-      this.totalUniqueJOs = this.olympicService.getTotalUniqueJOs(data);
-    });
-    
-  }
- 
 }
