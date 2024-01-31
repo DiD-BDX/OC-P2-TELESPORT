@@ -21,6 +21,3 @@ Exécutez `ng build` pour construire le projet. Les artefacts de construction se
 Les styles de l'application sont définis dans le fichier `styles.scss`. Ce fichier contient des styles pour les éléments de base de l'application, ainsi que des styles spécifiques pour les différentes parties de l'application.
 
 Par exemple, la classe `.boiteH3` est utilisée pour styliser les éléments avec une bordure, un arrondi, des marges et des couleurs spécifiques. Elle contient également des styles pour les éléments `<p>` à l'intérieur de ces éléments, ainsi que des styles adaptatifs pour différentes largeurs d'écran.
-
-## Contribution
-Les contributions à l'application sont les bienvenues. Veuillez créer une issue pour discuter des modifications que vous souhaitez apporter, puis créez une pull request une fois que vous avez implémenté vos modifications.
