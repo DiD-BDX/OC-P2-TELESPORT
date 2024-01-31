@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.btnHome button{
+    padding: 1%;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(164, 33, 0);
+    border-radius: 10px;
+    border-width: 0cap;
+}
+h1 {
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgba(63, 129, 126, 0.466);
+    border-radius: 10px;
+    text-align: center;
+    color: white; // Change the text color to white
+    padding-top: 2%; // Add a padding of 2% 
+    padding-bottom: 2%; // Add a padding of 2%
+}
+
+h3 {
+    font-size:large;
+}
+div h1 {
+    margin-bottom: 2%;
+}
+
+div h2 {
+    //margin-top: 2%;
+    width: 25%;
+    background-color: #02838F;
+    color: white;
+    border-radius: 10px;
+    padding: 1%;
+    text-align: center;
+}
+
+.boiteH3 {
+    text-align: center; // Ajout de cette ligne pour centrer le texte des balises p
+    border: 2px solid #02838F;
+    border-radius: 10px;
+    padding-right : 10px;
+    padding-left: 10px;
+    margin: 10px;
+    color: rgb(122, 122, 122);
+    width: 15%; 
+
+    p {
+        font-size:x-large; // Ajout de cette ligne pour modifier la taille du texte des balises p
+        color: black; // Ajout de cette ligne pour modifier la couleur du texte des balises p
+    }
+    
+    @media screen and (max-width: 768px) {
+        width: 50%;
+    }
+    
+    @media screen and (max-width: 480px) {
+        width: 100%;
+    }
+}
+

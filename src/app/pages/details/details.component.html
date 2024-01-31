@@ -1,0 +1,40 @@
+<div style="text-align: center;">
+    <h1>OLYMPIC APP - Details</h1>
+</div>
+<div class="btnHome" style="display: flex; justify-content: center;">
+    <button onclick="window.location.href = '';">BACK HOME (DASHBOARD)</button>
+</div>
+<div style="display: flex; justify-content: center;">
+    <h2>{{this.pageId}}</h2>
+</div>
+
+<div style="display: flex; justify-content: center;">
+    <div class="boiteH3">
+        <h3>Number of participations</h3>
+        <p>{{ getTotalParticipations() }}</p>
+    </div>
+    <div class="boiteH3">
+        <h3>Total number medals</h3>
+        <p>{{ getTotalMedals() }}</p>
+    </div>
+    <div class="boiteH3">
+        <h3>Total number of athletes</h3>
+        <p>{{ getTotalAthletes() }}</p>
+    </div>
+</div>
+
+<div class="ChartDiv">
+    <ngx-charts-bar-vertical
+    
+    [results]="chartData"
+    [xAxis]="true"
+    [yAxis]="true"
+    [gradient]="false"
+    [legend]="false"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    xAxisLabel="Years"
+    yAxisLabel="Medals">
+    >
+    </ngx-charts-bar-vertical>
+</div>
